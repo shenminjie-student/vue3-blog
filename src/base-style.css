@@ -1,0 +1,11 @@
+body {
+    width: 100%;
+    margin: 0px;
+
+}
+
+a {
+    /* 去掉 a 标签的下划线 */
+    text-decoration: none;
+    color: white;
+}

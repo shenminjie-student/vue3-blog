@@ -1,20 +1,31 @@
 {
-  "name": "vue3-blog",
+  "name": "my-blog-vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && echo shenminjie.online > dist/CNAME",
+    "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
+    "deploy": "npm run build && echo shenminjie.online > dist/CNAME && gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
-    "vue": "^3.5.42"
+    "axios": "^1.13.2",
+    "front-matter": "^4.0.2",
+    "github-markdown-css": "^5.8.1",
+    "markdown-it": "^14.1.0",
+    "vue": "^3.5.24",
+    "vue-device-detect": "^1.0.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.8",
-    "gh-pages": "^6.3.0",
-    "vite": "^8.3.0"
+    "@iconify-json/ri": "^1.2.6",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "gray-matter": "^4.0.3",
+    "markdown-it-anchor": "^9.2.0",
+    "star-markdown-css": "^0.5.3",
+    "unocss": "^66.5.10",
+    "unplugin-vue-markdown": "^29.2.0",
+    "vite": "^7.2.4",
+    "vue-router": "^4.6.4"
   }
 }
