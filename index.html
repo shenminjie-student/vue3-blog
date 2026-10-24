@@ -1,14 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>struct@杰构体的博客</title>
-    <script type="module" crossorigin src="/assets/index-CkgFZugB.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CHHAdQMX.css">
+    <meta
+      name="description"
+      content="struct@杰构体的个人博客 —— Qt / C++ 开发工程师，记录技术随笔、生活闲谈与喜欢的电影。"
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
+    <title>struct@杰构体 | 个人博客</title>
+    <script>
+      // 在首屏渲染前确定主题，避免深色模式闪白
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('blog-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+        } catch (e) {
+          /* 忽略隐私模式下的 localStorage 异常 */
+        }
+      })()
+    </script>
+    <script type="module" crossorigin src="/assets/index-2Zvj0yLR.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vue-vendor-DGEqt0Xr.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Ca4VqoRP.css">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app"></div>
   </body>
 </html>
