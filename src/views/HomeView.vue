@@ -1,128 +1,191 @@
 <script setup>
-  import { ref, onMounted, watch } from 'vue'
-  import axios from 'axios'
-  import PostCard from '../components/PostCard.vue'
-  import TitleDiv from '../components/TitleDiv.vue'
-  import TransitionView from './TransitionView.vue'
+import { computed } from 'vue'
+import BlogCard from '@/components/blog/BlogCard.vue'
+import BaseIcon from '@/components/common/BaseIcon.vue'
+import EmptyState from '@/components/common/EmptyState.vue'
+import SectionHeading from '@/components/common/SectionHeading.vue'
+import MovieGrid from '@/components/movies/MovieGrid.vue'
+import ProfileHero from '@/components/profile/ProfileHero.vue'
+import ProfileInfo from '@/components/profile/ProfileInfo.vue'
+import SkillGroup from '@/components/profile/SkillGroup.vue'
+import TimelineList from '@/components/profile/TimelineList.vue'
+import { usePosts } from '@/composables/usePosts'
+import { movies } from '@/data/movies'
+import { profile } from '@/data/profile'
+import { sortMovies } from '@/utils/bilibili'
 
-  const posts = ref([])
-  const loading = ref(true)
-  const transition = ref(true)
+const { posts } = usePosts()
 
-  // 请求 public/posts/list.json
-  const fetchList = async () => {
-    try {
-      // 注意：这里的路径是相对于网站根目录的
-      const res = await axios.get('/posts/list.json?t=' + Date.now()) // 加时间戳防止缓存
-      posts.value = res.data
-    } catch (e) {
-      console.error('获取列表失败', e)
-    } finally {
-      loading.value = false
-    }
-  }
+const recentPosts = computed(() => posts.value.slice(0, 3))
+const recentMovies = computed(() => sortMovies(movies, 'year-desc').slice(0, 4))
 
-  onMounted(() => {
-    fetchList();
-
-    setTimeout(() => {
-      transition.value = false;
-    }, 3000)
-  })
-  
+const stats = computed(() => [
+  { label: '开发经验', value: `${profile.experienceYears} 年+` },
+  { label: '技术文章', value: posts.value.length },
+  { label: '收藏电影', value: movies.length },
+])
 </script>
 
 <template>
+  <div class="page home">
+    <div class="container">
+      <ProfileHero :stats="stats" />
 
-  <!-- 过渡动画 -->
-   <!-- <TransitionView v-if="transition"></TransitionView> -->
+      <section class="home-section">
+        <SectionHeading index="01" title="关于我" description="一些基本信息和正在做的事" />
+        <div class="about">
+          <div class="about__text">
+            <p v-for="paragraph in profile.bio" :key="paragraph" class="about__paragraph">
+              {{ paragraph }}
+            </p>
 
-  <div class="head">
-    <div class="card">
-      <img class="head-portrait" src="/profile.jpg" alt="">
-      <router-link to="/post/about-me">
-        struct@杰构体
-      </router-link>
-      <hr class="top">
-      <a href="/post/about-blog">
-        <TitleDiv content="struct@杰构体的博客"></TitleDiv>
-      </a>
-      <p>All is well</p>
-      <p>希望成为一名优秀的程序员</p>
-      <hr class="bottom">
-    </div>
-    
-  </div>
+            <div class="about__interests">
+              <span class="about__interests-label">兴趣</span>
+              <span v-for="item in profile.interests" :key="item" class="about__interest">
+                {{ item }}
+              </span>
+            </div>
+          </div>
 
-  <div class="home-container">
-    <div v-if="loading">加载中...</div>
-    
-    <div v-else class="post-list">
-      <post-card v-for="post in posts" :key="post.id" :post="post"></post-card>
+          <ProfileInfo :items="profile.info" />
+        </div>
+      </section>
+
+      <section class="home-section">
+        <SectionHeading
+          index="02"
+          title="履历"
+          description="工作与学习经历，按时间倒序排列"
+        />
+        <TimelineList :items="profile.timeline" />
+      </section>
+
+      <section class="home-section">
+        <SectionHeading index="03" title="技能" description="常用技术栈与熟练度自评" />
+        <div class="skills">
+          <SkillGroup v-for="group in profile.skills" :key="group.group" :group="group" />
+        </div>
+      </section>
+
+      <section class="home-section">
+        <SectionHeading index="04" title="最近写的" description="技术、闲谈与踩坑记录">
+          <template #actions>
+            <RouterLink to="/blog" class="btn btn--sm">
+              全部文章
+              <BaseIcon name="arrow-right" :size="14" />
+            </RouterLink>
+          </template>
+        </SectionHeading>
+
+        <div v-if="recentPosts.length" class="posts">
+          <BlogCard v-for="post in recentPosts" :key="post.slug" :post="post" />
+        </div>
+        <EmptyState
+          v-else
+          icon="feather"
+          title="还没有文章"
+          description="在 src/content/posts 下新建一个 .md 文件就会出现在这里。"
+        />
+      </section>
+
+      <section class="home-section">
+        <SectionHeading index="05" title="最近重看的电影" description="点开即可在哔哩哔哩观看">
+          <template #actions>
+            <RouterLink to="/movies" class="btn btn--sm">
+              完整片单
+              <BaseIcon name="arrow-right" :size="14" />
+            </RouterLink>
+          </template>
+        </SectionHeading>
+
+        <MovieGrid :movies="recentMovies" :min-column-width="200" />
+      </section>
     </div>
   </div>
 </template>
 
 <style scoped>
+.home-section {
+  margin-top: var(--space-8);
+}
 
-  * {
-    color: aliceblue;
+.home-section:first-of-type {
+  margin-top: var(--space-5);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.about__paragraph {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 58ch;
+}
+
+.about__paragraph + .about__paragraph {
+  margin-top: var(--space-4);
+}
+
+.about__interests {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--border);
+}
+
+.about__interests-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-right: 2px;
+}
+
+.about__interest {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.posts > :first-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
   }
 
-  .head {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    /* 弹性盒子 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .skills {
+    grid-template-columns: 1fr;
   }
 
-  .card {
-    width: 95%;
-    max-width: 640px;
-    /* 弹性盒子 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgb(39, 43, 43); */
+  .posts {
+    grid-template-columns: 1fr;
   }
-
-  hr {
-    color: aliceblue;
-    background-color: azure;
-    width: 99%;
-    max-width: 800px;
-  }
-
-  .head-portrait {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-
-    box-shadow: 1px 1px 8px 1px rgb(255, 255, 255);
-    margin: 20px;
-  }
-
-  .head-portrait::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: aqua;
-    
-  }
-
-  .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  } 
-
+}
 </style>

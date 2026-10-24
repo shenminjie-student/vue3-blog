@@ -1,28 +1,54 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import NavigationBar from './components/NavigationBar.vue'
-import FooterBar from './components/FooterBar.vue'
-import SpecialEffects from './components/SpecialEffects.vue'
-import NeonBanner from './components/NeonBanner.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
 </script>
 
 <template>
-  <div class="App">
-    <SpecialEffects />
-    <NeonBanner />
-    <NavigationBar />
-    <router-view />
-    <footer-bar />
+  <div class="app-shell">
+    <AppHeader />
+    <main class="app-main">
+      <RouterView v-slot="{ Component }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
+    </main>
+    <AppFooter />
   </div>
 </template>
 
 <style scoped>
-  * {
-    background-color: black;
-  }
+.app-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
 
-  .App {
-    min-height: 100vh;
-    background-color: black;
+.app-main {
+  flex: 1 1 auto;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
   }
+}
 </style>

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# 本地 npm 缓存（沙箱环境下使用 --cache .npm-cache）
+.npm-cache
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

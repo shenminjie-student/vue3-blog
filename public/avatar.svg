@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="struct@杰构体 头像">
+  <defs>
+    <linearGradient id="avatarBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f5bd5" />
+      <stop offset="0.55" stop-color="#6d5ce7" />
+      <stop offset="1" stop-color="#8b5cf6" />
+    </linearGradient>
+    <radialGradient id="avatarGlow" cx="0.25" cy="0.2" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="avatarGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="240" height="240" fill="url(#avatarBg)" />
+  <rect width="240" height="240" fill="url(#avatarGrid)" />
+  <rect width="240" height="240" fill="url(#avatarGlow)" />
+
+  <circle cx="196" cy="44" r="54" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.4" />
+  <circle cx="196" cy="44" r="34" fill="#ffffff" fill-opacity="0.1" />
+
+  <text
+    x="120"
+    y="140"
+    text-anchor="middle"
+    font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',system-ui,sans-serif"
+    font-size="92"
+    font-weight="700"
+    fill="#ffffff"
+  >杰</text>
+
+  <text
+    x="120"
+    y="186"
+    text-anchor="middle"
+    font-family="ui-monospace, SFMono-Regular, Consolas, monospace"
+    font-size="13"
+    letter-spacing="4"
+    fill="#ffffff"
+    fill-opacity="0.72"
+  >STRUCT@</text>
+
+  <line x1="86" y1="202" x2="154" y2="202" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1" />
+</svg>
