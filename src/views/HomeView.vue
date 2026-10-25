@@ -55,7 +55,7 @@ const stats = computed(() => [
         <SectionHeading
           index="02"
           title="履历"
-          description="工作与学习经历，按时间倒序排列"
+          description="学习与工作经历，按时间倒序排列"
         />
         <TimelineList :items="profile.timeline" />
       </section>
@@ -68,7 +68,7 @@ const stats = computed(() => [
       </section>
 
       <section class="home-section">
-        <SectionHeading index="04" title="最近写的" description="技术、闲谈与踩坑记录">
+        <SectionHeading index="04" title="最近写的" description="技术文章、踩坑记录和日常闲谈">
           <template #actions>
             <RouterLink to="/blog" class="btn btn--sm">
               全部文章
@@ -84,7 +84,7 @@ const stats = computed(() => [
           v-else
           icon="feather"
           title="还没有文章"
-          description="在 src/content/posts 下新建一个 .md 文件就会出现在这里。"
+          description="敬请期待作者更新..."
         />
       </section>
 

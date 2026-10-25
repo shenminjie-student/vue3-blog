@@ -24,7 +24,7 @@ export const movies = [
     director: '阿兰·葛斯彭纳',
     region: '瑞士 / 德国',
     genres: ['小说改', '冒险', '剧情', '家庭'],
-    duration: 132,
+    duration: 106,
     score: 9.9,
     cover: 'https://i2.hdslb.com/bfs/archive/f8c6acb262c66511b7c25ebaaa5c08e682979c64.jpg',
     bilibiliUrl: 'https://www.bilibili.com/bangumi/play/ss26976?theme=movie&spm_id_from=333.337.0.0',

@@ -4,15 +4,15 @@
  */
 export const site = {
   name: 'struct@杰构体',
-  shortName: '杰构体',
+  shortName: 'struct@杰构体',
   title: 'struct@杰构体 · 个人博客',
   description:
-    'Qt / C++ 开发工程师的个人博客：技术随笔、生活闲谈，以及一些反复重看的电影。',
+    'struct@杰构体的个人博客：技术随笔、踩坑记录和日常闲谈，以及一些反复观看看的电影。',
   url: 'https://shenminjie.online',
   locale: 'zh-CN',
-  author: '沈敏杰',
+  author: ' struct@杰构体',
   email: 'nchu.shen@qq.com',
-  startYear: 2026,
+  startYear: 2025,
   nav: [
     { label: '关于我', to: '/', icon: 'user' },
     { label: '博客', to: '/blog', icon: 'feather' },
@@ -24,7 +24,7 @@ export const site = {
     { label: '站点', href: 'https://shenminjie.online', icon: 'globe' },
   ],
   footer: {
-    note: '用 Vue 3 + Vite 手工搭建，文章以 Markdown 编写。',
+    note: '借助AI工具，使用 Vue 3 + Vite 搭建，文章以 Markdown 编写。',
   },
 }
 

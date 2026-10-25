@@ -62,7 +62,7 @@ function resetFilters() {
       <PageHeader
         eyebrow="Writing"
         title="博客"
-        description="技术随笔、Qt 踩坑记录和一些没什么用的生活观察。文章用 Markdown 编写，提交到仓库即发布。"
+        description="技术笔记、踩坑记录、日常闲谈。点击任意文章即可跳转到完整内容。"
       >
         <template #meta>
           <p class="blog-count">

@@ -4,10 +4,11 @@ import site from '@/data/site'
 import BaseIcon from '../common/BaseIcon.vue'
 
 const year = new Date().getFullYear()
+// Copyright 年份：如果 startYear 与当前年份相同，则只显示当前年份，否则显示起始年份–当前年份
 const copyright = computed(() =>
   site.startYear === year ? `${year}` : `${site.startYear}–${year}`,
 )
-
+// 页脚导航链接
 const links = [
   { label: '关于我', to: '/' },
   { label: '博客', to: '/blog' },
@@ -50,16 +51,11 @@ const links = [
       <div class="footer__meta">
         <p class="footer__nav-title">关于本站</p>
         <p class="footer__note">{{ site.footer.note }}</p>
-        <p class="footer__note">
-          文章以
-          <RouterLink to="/blog" class="footer__inline-link">Markdown</RouterLink>
-          编写，构建后即为纯静态文件。
-        </p>
       </div>
     </div>
 
     <div class="container footer__bottom">
-      <p>© {{ copyright }} {{ site.author }} · {{ site.name }}</p>
+      <p>© {{ copyright }} {{ site.name }}</p>
       <p class="footer__tech mono">
         <span>Vue 3</span>
         <span aria-hidden="true">·</span>

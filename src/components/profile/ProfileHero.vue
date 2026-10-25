@@ -19,10 +19,11 @@ defineProps({
         {{ profile.status }}
       </p>
 
+      <!-- 作用：展示个人姓名 -->
       <h1 class="hero__title">
         你好，我是
         <span class="hero__name">{{ profile.name }}</span>
-        <span class="hero__alias mono">struct@杰构体</span>
+        <!-- <span class="hero__alias mono">struct@杰构体</span> -->
       </h1>
 
       <p class="hero__role">{{ profile.role }}</p>
@@ -51,7 +52,7 @@ defineProps({
       </dl>
     </div>
 
-    <div class="hero__aside">
+    <!-- <div class="hero__aside">
       <div class="hero__avatar-frame">
         <img
           class="hero__avatar"
@@ -66,7 +67,7 @@ defineProps({
         <span class="hero__badge">Qt</span>
         <span class="hero__badge">Vue 3</span>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 

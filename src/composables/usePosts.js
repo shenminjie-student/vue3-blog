@@ -22,6 +22,7 @@ function normalizeTags(tags) {
   return [...new Set(list.map((tag) => String(tag).trim()).filter(Boolean))]
 }
 
+/** 创建文章对象 */
 function createPost(path, raw) {
   const file = path.split('/').pop().replace(/\.md$/i, '')
   const { data, content } = parseFrontMatter(raw)
@@ -44,6 +45,7 @@ function createPost(path, raw) {
   }
 }
 
+/** 按时间倒序排序，置顶文章排在最前面 */
 const byDateDesc = (a, b) => {
   if (a.pinned !== b.pinned) return a.pinned ? -1 : 1
   return b.timestamp - a.timestamp
@@ -77,6 +79,7 @@ export function usePosts() {
 
   const tags = computed(() => tagIndex.value)
 
+  /** 根据 slug 获取文章对象，找不到返回 null */
   function getPost(slug) {
     return allPosts.find((post) => post.slug === slug) || null
   }

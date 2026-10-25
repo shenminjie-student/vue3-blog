@@ -58,7 +58,7 @@ function resetFilters() {
       <PageHeader
         eyebrow="Watchlist"
         title="电影"
-        description="反复重看的一些片子。点击任意海报即可跳转到哔哩哔哩观看，片单数据维护在 src/data/movies.js。"
+        description="反复重看的一些片子。点击任意海报即可跳转到哔哩哔哩观看。"
       >
         <template #meta>
           <p class="movie-count">
