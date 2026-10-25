@@ -26,7 +26,7 @@ export const movies = [
     genres: ['小说改', '冒险', '剧情', '家庭'],
     duration: 132,
     score: 9.9,
-    cover: 'https://i2.hdslb.com/bfs/archive/f8c6acb262c66511b7c25ebaaa5c08e682979c64.jpg@424w_240h.webp',
+    cover: 'https://i2.hdslb.com/bfs/archive/f8c6acb262c66511b7c25ebaaa5c08e682979c64.jpg',
     bilibiliUrl: 'https://www.bilibili.com/bangumi/play/ss26976?theme=movie&spm_id_from=333.337.0.0',
     note: '海蒂很小就失去了父母，被送到阿尔卑斯山上和爷爷生活。爷爷是个脾气古怪的老人，海蒂却用她的善良和纯真融化了爷爷的心，也让周围的人们重新找回了温暖和希望。',
   }
