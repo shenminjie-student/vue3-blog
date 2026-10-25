@@ -11,8 +11,8 @@ export const site = {
   url: 'https://shenminjie.online',
   locale: 'zh-CN',
   author: '沈敏杰',
-  email: 'hello@example.com',
-  startYear: 2022,
+  email: 'nchu.shen@qq.com',
+  startYear: 2026,
   nav: [
     { label: '关于我', to: '/', icon: 'user' },
     { label: '博客', to: '/blog', icon: 'feather' },
@@ -20,7 +20,7 @@ export const site = {
   ],
   socials: [
     { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
-    { label: '邮箱', href: 'mailto:hello@example.com', icon: 'mail' },
+    { label: '邮箱', href: 'nchu.shen@qq.com', icon: 'mail' },
     { label: '站点', href: 'https://shenminjie.online', icon: 'globe' },
   ],
   footer: {

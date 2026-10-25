@@ -5,10 +5,10 @@
 export const profile = {
   name: '沈敏杰',
   alias: 'struct@杰构体',
-  role: 'C++ / Qt 客户端开发工程师',
+  role: '软件开发工程师',
   tagline: '用 Qt 写桌面，用 Vue 写网页，用文字记录折腾。',
   avatar: '/avatar.svg',
-  location: '中国 · 杭州',
+  location: '中国 · 上海',
   status: '在职 · 欢迎技术交流',
   experienceYears: 3,
   bio: [
@@ -18,7 +18,7 @@ export const profile = {
   ],
   /** 基本信息，渲染为两栏信息卡 */
   info: [
-    { label: '坐标', value: '中国 · 杭州', icon: 'map-pin' },
+    { label: '坐标', value: '中国 · 上海', icon: 'map-pin' },
     { label: '职业', value: 'C++ / Qt 客户端开发', icon: 'briefcase' },
     { label: '关注方向', value: '桌面应用 · 工具链 · 前端可视化', icon: 'code' },
     { label: '邮箱', value: 'hello@example.com', href: 'mailto:hello@example.com', icon: 'mail' },
@@ -28,36 +28,27 @@ export const profile = {
   /** 履历：工作与教育都放在同一条时间线上，type 决定图标与配色 */
   timeline: [
     {
-      period: '2024.07 — 至今',
-      title: '客户端开发工程师',
-      org: '某科技公司',
-      type: 'work',
-      description:
-        '负责跨平台桌面客户端的核心模块：界面框架、插件机制与打包发布链路。把 Qt Widgets 项目逐步迁移到 Qt 6，并补齐 CI 上的静态检查与自动化构建。',
-      highlights: ['Qt 6 迁移', '插件化架构', 'CI/CD'],
-    },
-    {
-      period: '2022.09 — 2024.06',
-      title: '计算机科学与技术 · 硕士',
-      org: '某大学',
-      type: 'edu',
-      description:
-        '研究方向为图形界面与可视化。毕业论文做的是基于 Qt Quick 的实时数据可视化框架，顺手维护了一个小型的开源绘图控件库。',
-      highlights: ['图形界面', '数据可视化', 'Qt Quick'],
-    },
-    {
-      period: '2021.07 — 2021.09',
-      title: '软件开发实习生',
-      org: '某工业软件公司',
+      period: '2026.06 — 至今',
+      title: '软件开发',
+      org: '中航航空模拟系统有限公司',
       type: 'work',
       description:
         '参与工业软件上位机的功能开发，独立完成数据采集面板与日志模块，第一次完整体验了从需求到发版的全流程。',
       highlights: ['上位机', '数据采集'],
     },
     {
-      period: '2018.09 — 2022.06',
-      title: '软件工程 · 本科',
-      org: '某大学',
+      period: '2023.09 — 2026.06',
+      title: '新一代电子信息技术 · 硕士',
+      org: '南昌航空大学',
+      type: 'edu',
+      description:
+        '参与工业软件上位机的功能开发，独立完成数据采集面板与日志模块，第一次完整体验了从需求到发版的全流程。',
+      highlights: ['上位机', '数据采集'],
+    },
+    {
+      period: '2019.09 — 2023.06',
+      title: '通信工程 · 本科',
+      org: '南昌航空大学',
       type: 'edu',
       description:
         '加入学校的技术社团，开始写 C++ 与前端。第一次用 Vue 做完一个完整的项目，也第一次意识到工程规范的重要性。',
