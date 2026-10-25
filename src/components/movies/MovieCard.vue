@@ -31,6 +31,7 @@ const isExternal = computed(() => /^https?:\/\//i.test(url.value))
         :alt="`${movie.title} 封面`"
         loading="lazy"
         decoding="async"
+        referrerpolicy="no-referrer"
       />
 
       <span class="movie__score">
